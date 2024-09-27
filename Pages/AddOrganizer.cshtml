@@ -1,0 +1,32 @@
+@page
+@model Event.Pages.AddOrganizer
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewData["Title"] = "addorganizer";
+}
+<section id="add-organizer">
+    <h1>Add and organizer</h1>
+    <div class="form-wrapper">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Contact"></label>
+                <input asp-for="Input.Contact" class="form-control" />
+                <span asp-validation-for="Input.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Address"></label>
+                <input asp-for="Input.Address" class="form-control" />
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+</section>

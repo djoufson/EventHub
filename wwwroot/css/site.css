@@ -1,0 +1,210 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.nav-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar{
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5); /* Transparent white background */
+  backdrop-filter: blur(10px); /* Glass effect */
+  border: none; /* Remove border if needed */
+}
+
+
+/* Login page */
+#login{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  margin: 0 10%;
+}
+
+#login form{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.form-wrapper #heading{
+  text-align: center;
+}
+
+/* Event cards */
+#event-item form{
+  text-align: center;
+}
+.card {
+  max-width: 30%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/******
+
+Index 
+
+****/
+
+/* Search Bar */
+.search-input {
+  border-radius: 30px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 40%;
+  text-align: center;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-btn {
+  border-radius: 30px;
+  padding: 10px 25px;
+  background-color: #007bff;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+/* Hero */
+.hero{
+  background-image: url("../assets/lady.jpg");
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  height: 70vh;
+  align-content: center;
+  justify-content: center;
+  
+}
+
+.hero-content form{
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+/* Event Section */
+.events {
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  margin: 0 20px;
+}
+
+.events #section-title{
+  text-align: center;
+}
+.events #event-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+
+
+/* Add Event Page */
+
+.form-wrapper{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  margin: 0 30%;
+}
+
+.form-wrapper form{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.form-wrapper #heading{
+  text-align: center;
+}
+
+#add-event form #create-event{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+
+}
+
+#add-event form #create-event button{
+  width: 40%;
+  height: 60px;
+  font-size: large;
+} 
+
+
+/* Event details page */
+.event-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-detail #event-image{
+  width: 60%;
+}

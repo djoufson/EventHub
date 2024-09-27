@@ -1,0 +1,20 @@
+@using Event.Models.ViewModels
+@model EventDisplayViewModel
+<div class="card card-outline-primary m-1 p-1">
+    <img class="card-img-top" loading="lazy" src="@Model.Event.ImageUrl" />
+    <div class="bg-faded p-1" id="event-item">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Event.Category</h5>
+            <p class="card-text">@Model.Event.Description</p>
+            <div class="card-buttons">
+                <form method="post" asp-controller="Home" asp-action="Rsvp" asp-route-id="@Model.Event.Id">
+                    <button class="btn rsvp @(Model.IsRsvped ? "btn-success" : "btn-primary")" id="rsvp"
+                        onclick="attending(this)">@(Model.IsRsvped ? "Attending" : "RSVP")</button>
+                </form>
+                <form method="post" asp-controller="Home" asp-action="GetEvent" asp-route-id="@Model.Event.Id">
+                    <button class="btn btn-outline-primary" id="rsvp" >More</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

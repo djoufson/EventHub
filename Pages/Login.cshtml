@@ -1,0 +1,31 @@
+@page
+@model Event.Pages.Login
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<section id="login-page">
+    <div class="form-wrapper" id="login">
+        <h2 id="heading">Log in</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input asp-for="Input.RememberMe" class="form-check-input"/>
+                    <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Log in</button>
+        </form>
+    </div>
+</section>
