@@ -25,24 +25,21 @@ body {
   margin-bottom: 60px;
 }
 
-.nav-wrapper{
+.nav-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.navbar{
-  top: 0;
-  left: 0;
-  width: 100%;
+.navbar {
+  height: 10vh;
   background: rgba(255, 255, 255, 0.5); /* Transparent white background */
   backdrop-filter: blur(10px); /* Glass effect */
   border: none; /* Remove border if needed */
 }
 
-
 /* Login page */
-#login{
+#login {
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -50,37 +47,67 @@ body {
   margin: 0 10%;
 }
 
-#login form{
+#login form {
   align-items: center;
   justify-content: center;
   align-content: center;
 }
 
-.form-wrapper #heading{
+.form-wrapper #heading {
   text-align: center;
 }
 
 /* Event cards */
-#event-item form{
+#event-item form {
   text-align: center;
 }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card {
-  max-width: 30%;
+  max-width: 22%;
+  height: 390px;
+  border: none;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
-.card:hover {
-  transform: scale(1.03);
+.card .card-img {
+  border-radius: 15px;
+  width: 500px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card:hover{
+  transform: scale(1.07);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px;
 }
 
-
-.card-buttons{
+.card-buttons {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
+  transform: translateY(10px); 
+}
+.card:hover .card-buttons {
+  opacity: 1;           
+  transform: translateY(0);  
 }
 
 /******
@@ -90,13 +117,19 @@ Index
 ****/
 
 /* Search Bar */
+.search {
+  width: 40%;
+  padding-left: 100px;
+}
+.search form {
+  display: flex;
+  flex-direction: row;
+}
 .search-input {
   border-radius: 30px;
-  padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  width: 40%;
-  text-align: center;
+  width: 100%;
 }
 
 .search-input:focus {
@@ -123,20 +156,18 @@ Index
   margin: 0 auto;
 }
 
-
 /* Hero */
-.hero{
+.hero {
   background-image: url("../assets/lady.jpg");
   background-size: cover;
-  background-position: center; 
+  background-position: center;
+  border-radius: 20px;
+  margin: 0px 5%;
   background-repeat: no-repeat;
   height: 70vh;
-  align-content: center;
-  justify-content: center;
-  
 }
 
-.hero-content form{
+.hero-content form {
   justify-content: center;
   text-align: center;
   display: flex;
@@ -150,21 +181,18 @@ Index
   margin: 0 20px;
 }
 
-.events #section-title{
+.events #section-title {
   text-align: center;
 }
-.events #event-wrapper{
+.events #event-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-
-
-
 /* Add Event Page */
 
-.form-wrapper{
+.form-wrapper {
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -172,39 +200,56 @@ Index
   margin: 0 30%;
 }
 
-.form-wrapper form{
+.form-wrapper form {
   align-items: center;
   justify-content: center;
   align-content: center;
 }
 
-.form-wrapper #heading{
+.form-wrapper #heading {
   text-align: center;
 }
 
-#add-event form #create-event{
+#add-event form #create-event {
   justify-content: center;
   align-items: center;
   text-align: center;
   padding-top: 20px;
-
 }
 
-#add-event form #create-event button{
+#add-event form #create-event button {
   width: 40%;
   height: 60px;
   font-size: large;
-} 
-
+}
 
 /* Event details page */
-.event-detail{
+.event-detail {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.event-detail #event-image{
+.event-detail #event-image {
   width: 60%;
+}
+
+.event-detail #event-carousel img {
+  height: 500px;
+  width: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+#event-description {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+}
+
+.description {
+  justify-content: left;
+  align-items: left;
+  align-content: start;
+  margin: 20%;
 }

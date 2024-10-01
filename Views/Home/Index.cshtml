@@ -10,15 +10,10 @@
 
 <section id="event-section">
     <div class="hero">
-        <div class="hero-content">
-            <form method="post" asp-controller="Home" asp-action="Search">
-                <input name="keyword" type="search" class="form-control search-input" placeholder="Search Events...">
-                <button class="btn btn-primary search-btn" type="submit">Search</button>
-            </form>
-        </div>
+        
     </div>
     <div class="events" id="hot-event">
-        <h1 id="section-title">Hot Events</h1>
+        <h1 id="section-title">For You</h1>
         <div id="event-wrapper">
             @foreach (var item in Model)
             {
