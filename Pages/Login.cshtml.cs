@@ -29,6 +29,7 @@ namespace Event.Pages
 
         }
 
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

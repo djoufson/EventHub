@@ -10,6 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.ConfigureEmailService(builder.Configuration);
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 builder.Services.ConfigureIdentity();

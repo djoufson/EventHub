@@ -5,6 +5,7 @@ using Event.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Event.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Event.Controllers;
 
@@ -63,6 +64,7 @@ public class HomeController : Controller
     }
 
 
+    [Authorize]
     public async Task<IActionResult> GetEvent(int id)
     {
         var _event = await _context.Events.FindAsync(id);

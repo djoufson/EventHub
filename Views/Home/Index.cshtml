@@ -13,7 +13,13 @@
         
     </div>
     <div class="events" id="hot-event">
-        <h1 id="section-title">For You</h1>
+        <h1 id="section-title">Trending</h1>
+        <div id="event-wrapper">
+            @foreach (var item in Model)
+            {
+                <partial name="EventCard" , model="item" />
+            }
+        </div>
         <div id="event-wrapper">
             @foreach (var item in Model)
             {
@@ -22,7 +28,7 @@
         </div>
     </div>
     <div class="events" id="conference section">
-        <h1 id="section-title">Conferences</h1>
+        <h1 id="section-title">Online</h1>
         <div id="event-wrapper">
             @foreach (var item in Model)
             {
@@ -31,7 +37,7 @@
         </div>
     </div>
     <div class="events" id="cs-sections">
-        <h1 id="section-title">Coming Soon...</h1>
+        <h1 id="section-title">Organizers</h1>
         <div id="event-wrapper">
             @foreach (var item in Model)
             {
