@@ -20,6 +20,7 @@ namespace Event.Data
 
         public DbSet<Eventt>? Events { get; set; }
         public DbSet<RSVP>? RSVPs { get; set; }
+        public DbSet<EventLike>? EventLikes { get; set; }
         public DbSet<Organizer>? Organizers { get; set; }
 
 
@@ -27,6 +28,8 @@ namespace Event.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<EventLike>()
+                .HasKey(r => new { r.Id });
             modelBuilder.Entity<RSVP>()
                 .HasKey(r => new { r.Id });
 

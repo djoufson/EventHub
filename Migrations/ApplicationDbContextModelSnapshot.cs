@@ -93,6 +93,33 @@ namespace Event.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Event.Models.EventLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LikedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EventLikes");
+                });
+
             modelBuilder.Entity("Event.Models.Eventt", b =>
                 {
                     b.Property<int>("Id")
@@ -116,6 +143,9 @@ namespace Event.Migrations
 
                     b.Property<bool>("IsTicketed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("LikesCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
@@ -142,6 +172,7 @@ namespace Event.Migrations
                             Description = "A kindom invasion, bringing the presence of God the the lost sheep",
                             ImageUrl = "",
                             IsTicketed = false,
+                            LikesCount = 0,
                             SecondaryImageUrls = "[]"
                         },
                         new
@@ -152,6 +183,7 @@ namespace Event.Migrations
                             Description = "Lux amiga putting everyone on the dancing floor",
                             ImageUrl = "",
                             IsTicketed = true,
+                            LikesCount = 0,
                             SecondaryImageUrls = "[]"
                         });
                 });
@@ -173,6 +205,10 @@ namespace Event.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfileImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -234,13 +270,13 @@ namespace Event.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6fc984b2-2818-4b8d-84bb-fd7ae870d664",
+                            Id = "7fe837b0-0fe4-45c4-85e9-28186fa9d3e6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "dc3e2036-60c5-41b0-8305-3acb6f3e0a13",
+                            Id = "5ef4b288-777e-414c-9162-281c14968195",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -350,6 +386,25 @@ namespace Event.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Event.Models.EventLike", b =>
+                {
+                    b.HasOne("Event.Models.Eventt", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Event.Models.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Event.Models.Eventt", b =>

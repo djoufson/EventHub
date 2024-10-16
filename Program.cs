@@ -1,5 +1,7 @@
 using Event.Data;
 using Event.Extensions;
+using Event.Interfaces;
+using Event.Services.EmailService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +12,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.ConfigureEmailService(builder.Configuration);
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
+builder.Services.AddHttpClient();
 builder.Services.ConfigureIdentity();
 builder.Services.AddRazorPages();
 

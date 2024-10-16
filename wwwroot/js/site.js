@@ -1,11 +1,48 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function likeEvent(eventId) {
+  $.ajax({
+    url: "/Home/LikeEvent",
+    type: "POST",
+    data: { eventId: eventId },
+    success: function (result) {
+      if (result.success) {
+        $("#like-count-" + eventId).text(result.likesCount);
+      }
+    },
+    error: function () {
+      alert("Failed to like the event.");
+    },
+  });
+}
 
-// Write your JavaScript code.
-// function attending(button){
-//     button.textContent('Attending');
-//     button.classList.remove('btn-primary');
-//     button.classList.add('btn-success'); // Change to a different color class
-//     // Optionally, change the button text
-// }
 
+document.querySelectorAll(".rsvp-form").forEach(form => {
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from redirecting
+
+        const formData = new FormData(this); // Serialize the form data
+        const url = this.action; // Get the form's action URL
+        const rsvpButton = this.querySelector("button"); // The RSVP button inside the form
+
+        // Fetch API to send the form data asynchronously
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest', // Identify the request as an AJAX request
+                'X-CSRF-Token': document.querySelector('input[name="__RequestVerificationToken"]').value // CSRF token
+            },
+            body: new URLSearchParams(formData)
+        })
+        .then(response => response.json()) // Parse the JSON response
+        .then(result => {
+            if (result.success) {
+                // Change the RSVP button's appearance and text based on the response
+                rsvpButton.classList.remove("btn-primary", "btn-success");
+                rsvpButton.classList.add(result.isRsvped ? "btn-success" : "btn-primary");
+                rsvpButton.textContent = result.isRsvped ? "Attending" : "RSVP";
+            } else {
+                alert("RSVP failed. Please try again.");
+            }
+        })
+        .catch(error => console.error('Error:', error)); // Handle any errors
+    });
+});

@@ -91,7 +91,7 @@ header {
 }
 
 .card:hover{
-  transform: scale(1.07);
+  transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px;
 }
@@ -108,6 +108,15 @@ header {
 .card:hover .card-buttons {
   opacity: 1;           
   transform: translateY(0);  
+}
+
+/* Organizer card */
+.organizer-profile-img {
+  width: 120px;          /* Set the width of the profile image */
+  height: 120px;         /* Set the height of the profile image */
+  border-radius: 50%;    /* Make the image a circle */
+  object-fit: cover;     /* Ensure the image covers the entire circle without distortion */
+  border: 2px solid #ddd; /* Optional: Add a subtle border */
 }
 
 /******
@@ -193,6 +202,19 @@ Index
   justify-content: space-around;
 }
 
+#action-section
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  height: 40vh;
+}
+#action-section .action{
+  width: 40%;
+  border: 1px;
+}
 /* Add Event Page */
 
 .form-wrapper {

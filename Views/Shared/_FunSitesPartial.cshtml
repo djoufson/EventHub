@@ -1,0 +1,45 @@
+@model List<FunSite>
+
+<div class="fun-sites-container">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var site in Model)
+        {
+            <div class="fun-site-card">
+                <h3>@site.Name</h3>
+                @if (!string.IsNullOrEmpty(site.ImageUrl))
+                {
+                    <img src="@site.ImageUrl" alt="@site.Name" class="site-image" />
+                }
+                <p>@site.Address</p>
+                <p>Rating: @site.Rating</p>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No fun sites found nearby.</p>
+    }
+</div>
+
+<style>
+    .fun-sites-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .fun-site-card {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .site-image {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+</style>

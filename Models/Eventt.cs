@@ -17,6 +17,7 @@ namespace Event.Models
         public string? Location { get; set; }
         public DateTime Date { get; set; }
         public List<RSVP> RSVPs { get; set; } = new List<RSVP>();
+        public int LikesCount { get; set; }
 
         public string ImageUrl { get; set; } = string.Empty;
         public List<string> SecondaryImageUrls { get; set; } = new List<string>();

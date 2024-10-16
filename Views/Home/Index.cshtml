@@ -1,4 +1,5 @@
 ﻿@using Event.Models.ViewModels
+@model MainPageViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Home Page";
@@ -6,22 +7,15 @@
 @{
     Layout = "_Layout";
 }
-@model IEnumerable<EventDisplayViewModel>
 
 <section id="event-section">
     <div class="hero">
         
     </div>
     <div class="events" id="hot-event">
-        <h1 id="section-title">Trending</h1>
+        <h1 id="section-title"><i class="fas fa-chart-line"></i>Trending</h1>
         <div id="event-wrapper">
-            @foreach (var item in Model)
-            {
-                <partial name="EventCard" , model="item" />
-            }
-        </div>
-        <div id="event-wrapper">
-            @foreach (var item in Model)
+            @foreach (var item in Model.TrendingEvents.Take(4))
             {
                 <partial name="EventCard" , model="item" />
             }
@@ -30,19 +24,43 @@
     <div class="events" id="conference section">
         <h1 id="section-title">Online</h1>
         <div id="event-wrapper">
-            @foreach (var item in Model)
+           @foreach (var item in Model.OnlineEvents)
             {
                 <partial name="EventCard" , model="item" />
             }
         </div>
     </div>
     <div class="events" id="cs-sections">
-        <h1 id="section-title">Organizers</h1>
+        <h1 id="section-title">Music</h1>
         <div id="event-wrapper">
-            @foreach (var item in Model)
+            @foreach (var item in Model.MusicEvents)
             {
                 <partial name="EventCard" , model="item" />
             }
+        </div>
+    </div>
+    <hr>
+    <div class="events" id="cs-sections">
+        <h1 id="section-title">Organizers</h1>
+        <div id="event-wrapper">
+            @foreach (var item in Model.Organizers)
+            {
+                <partial name="OrganizerCard" , model="item" />
+            }
+        </div>
+    </div>
+    <hr>
+    
+    <div class="events" id="action-section">
+        <div class="action">
+            <p>Want to organize an event and need to make it more visible?
+                we've got you covered
+            </p>
+            <button>Publish</button>
+        </div>
+        <div class="action">
+            <p>Do you want to propose your services for an event and get bussiness deals, look no further</p>
+            <button>Propose services</button>
         </div>
     </div>
 </section>

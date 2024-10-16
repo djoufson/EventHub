@@ -8,9 +8,9 @@
     ViewData["Title"] = "addorganizer";
 }
 <section id="add-organizer">
-    <h1>Add and organizer</h1>
     <div class="form-wrapper">
-        <form method="post">
+        <h1>Add and organizer</h1>
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="Input.Name"></label>
                 <input asp-for="Input.Name" class="form-control" />
@@ -25,6 +25,10 @@
                 <label asp-for="Input.Address"></label>
                 <input asp-for="Input.Address" class="form-control" />
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" name="ProfileImage" class="form-control" />
+                <span asp-validation-for="Input.ProfileImageUrl" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-success">Add</button>
         </form>

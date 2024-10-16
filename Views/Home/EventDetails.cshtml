@@ -41,5 +41,31 @@
         <p>@Model.Date.ToString("dd MMMM, yyyy")</p>
         <label>Location</label>
         <p>@Model.Location</p>
+
     </div>
+
+    <div id="fun-sites-container">
+        <!-- Fun sites will be loaded here -->
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var locationName = "@Model.Location"; // Assume you have the location name in the Model
+
+            $.ajax({
+                url: '/EventDetails?handler=FunSitesByLocationNamePartial',
+                type: 'GET',
+                data: {
+                    locationName: locationName
+                },
+                success: function (result) {
+                    $('#fun-sites-container').html(result);
+                },
+                error: function () {
+                    $('#fun-sites-container').html('<p>Failed to load fun sites.</p>');
+                }
+            });
+        });
+    </script>
+
 </section>

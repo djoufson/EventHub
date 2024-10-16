@@ -8,6 +8,7 @@ namespace Event.Models.ViewModels
     public class EventDisplayViewModel
     {
         public Eventt Event { get; set; }
+        public Organizer Organizer { get; set; }
         public bool IsRsvped { get; set; }
     }
 }

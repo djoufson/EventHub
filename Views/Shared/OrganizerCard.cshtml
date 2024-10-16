@@ -1,0 +1,17 @@
+@using Event.Models.ViewModels
+@model Organizer
+<div class="card card-outline-primary m-1 p-1 text-center">
+    <div>
+        <img class="organizer-profile-img" loading="lazy" src="@Model.ProfileImageUrl" />
+    </div>
+    <div class="bg-faded p-1" id="event-item">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <div class="card-buttons">
+                <form method="post" asp-controller="Home" asp-action="GetEvent" asp-route-id="@Model.Id">
+                    <button class="btn btn-outline-primary" id="rsvp">Follow</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
