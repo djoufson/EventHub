@@ -6,10 +6,6 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-nav{
-  background-color: rgba(255, 255, 255, 0.3); 
-  backdrop-filter: blur(10px);
-}
 
 a {
   color: #d1410c;

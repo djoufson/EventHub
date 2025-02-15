@@ -26,3 +26,5 @@ obj/
 
 # Ignore runtime environment directories
 node_modules/
+
+assets/

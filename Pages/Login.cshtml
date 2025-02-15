@@ -4,10 +4,12 @@
 @{
     ViewData["Title"] = "Log in";
 }
-
+@{
+    Layout = "_MinimalLayout";
+}
 <section id="login-page">
+    <h2 id="heading">Log in</h2>
     <div class="form-wrapper" id="login">
-        <h2 id="heading">Log in</h2>
         <form method="post">
             <div class="form-group">
                 <label asp-for="Input.Email"></label>

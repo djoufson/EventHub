@@ -1,14 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Event.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Event.Contracts;
-using Microsoft.Extensions.Logging;
 using Event.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Event.Pages
 {

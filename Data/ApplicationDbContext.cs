@@ -22,12 +22,17 @@ namespace Event.Data
         public DbSet<RSVP>? RSVPs { get; set; }
         public DbSet<EventLike>? EventLikes { get; set; }
         public DbSet<Organizer>? Organizers { get; set; }
+        public DbSet<ServiceProposal>? ServiceProposals { get; set; }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ServiceProposal>()
+                .HasOne(r => r.Event)
+                .WithMany(p => p.ServiceProposals)
+                .HasForeignKey(r => r.EventId);
             modelBuilder.Entity<EventLike>()
                 .HasKey(r => new { r.Id });
             modelBuilder.Entity<RSVP>()

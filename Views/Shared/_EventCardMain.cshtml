@@ -1,0 +1,26 @@
+@using Event.Models.ViewModels
+@model EventViewModel
+<div class="card card2 mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <!-- Event Image -->
+        <div class="col-md-4">
+            <img src="/@Model.Event.ImageUrl" class="img-fluid rounded-start" alt="Event Image" />
+        </div>
+        <!-- Event Details -->
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Event.Category</h5>
+                <p class="card-text">@Model.Event.Description</p>
+                <div class="card-buttons">
+                    <button class="btn btn-outline-primary" id="rsvp">
+                        <a href="/Home/GetEvent/@Model.Event.Id">More</a>
+                    </button>
+                    <button class="like-button" data-event-id="@Model.Event.Id" onclick="likeEvent(@Model.Event.Id)">
+                        Like (<span id="like-count-@Model.Event.Id">@Model.Event.LikesCount</span>)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

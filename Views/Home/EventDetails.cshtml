@@ -1,4 +1,5 @@
-@model Eventt
+@using Event.Models.ViewModels
+@model EventDetailsViewModel
 @{
     ViewData["Title"] = "EventDetails";
 }
@@ -10,11 +11,11 @@
         <div id="event-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-inner">
-                    @if (Model.SecondaryImageUrls != null && Model.SecondaryImageUrls.Count > 0)
+                    @if (Model.Event.SecondaryImageUrls != null && Model.Event.SecondaryImageUrls.Count > 0)
                     {
-                        for (int i = 0; i < Model.SecondaryImageUrls.Count; i++)
+                        for (int i = 0; i < Model.Event.SecondaryImageUrls.Count; i++)
                         {
-                            var imageUrl = Model.SecondaryImageUrls[i];
+                            var imageUrl = Model.Event.SecondaryImageUrls[i];
                             <div class="carousel-item @(i == 0 ? "active" : "")">
                                 <img src="/@imageUrl.ToString()" class="d-block w-100" alt="Event Image @i" />
                             </div>
@@ -27,45 +28,41 @@
                 <a class="carousel-control-next" href="#eventImagesCarousel" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
+            </div </div>
+        </div>
+        <div class="decription">
+            <div>
+                <h1>
+                    @Model.Event.Description
+                </h1>
             </div>
+            <p>@Model.Event.Date.ToString("D")</p>
+            <p>@Model.Event.Location</p>
+            <p>@Model.Event.Description</p>
+            <a href="https://wa.me/+237681719103?text=I%20am%20interested%20in%20your%20event!" target="_blank">
+                <button class="btn btn-success">Chat with Organizer</button>
+            </a>
 
         </div>
-    </div>
-    <div class="decription">
-        <div>
-            <h1>
-                @Model.Description
-            </h1>
+
+        <div class="section-container">
+            <button class="btn">
+                <a asp-page="/ProposeService" asp-route-eventId="@Model.Event.Id">Propose a Service for this Event</a>
+            </button>
         </div>
-        <label>Date</label>
-        <p>@Model.Date.ToString("dd MMMM, yyyy")</p>
-        <label>Location</label>
-        <p>@Model.Location</p>
-
-    </div>
-
-    <div id="fun-sites-container">
-        <!-- Fun sites will be loaded here -->
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            var locationName = "@Model.Location"; // Assume you have the location name in the Model
-
-            $.ajax({
-                url: '/EventDetails?handler=FunSitesByLocationNamePartial',
-                type: 'GET',
-                data: {
-                    locationName: locationName
-                },
-                success: function (result) {
-                    $('#fun-sites-container').html(result);
-                },
-                error: function () {
-                    $('#fun-sites-container').html('<p>Failed to load fun sites.</p>');
+        <div class="section-container similar-events">
+            <div class="events">
+            @if (Model.SimilarEvents.Count != 0)
+            {
+                <h1 id="section-title">Similar Events</h1>
+                <div id="event-wrapper">
+                @foreach (var item in Model.SimilarEvents.Take(4))
+                {
+                    <partial name="EventCard" , model="item" />
                 }
-            });
-        });
-    </script>
+                </div>
+            }
+            </div>
+        </div>
 
 </section>

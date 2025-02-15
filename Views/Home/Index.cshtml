@@ -8,10 +8,17 @@
     Layout = "_Layout";
 }
 
-<section id="event-section">
-    <div class="hero">
-        
-    </div>
+<main>
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>We Have Gathered The Best Events For You!</h1>
+                <p>Find events, book services, and connect with people!</p>
+                <a asp-controller="Home" asp-action="GetEvents" class="btn btn-primary">Find Your Next Event</a>
+            </div>
+        </div>
+    </section>
+
     <div class="events" id="hot-event">
         <h1 id="section-title"><i class="fas fa-chart-line"></i>Trending</h1>
         <div id="event-wrapper">
@@ -21,46 +28,4 @@
             }
         </div>
     </div>
-    <div class="events" id="conference section">
-        <h1 id="section-title">Online</h1>
-        <div id="event-wrapper">
-           @foreach (var item in Model.OnlineEvents)
-            {
-                <partial name="EventCard" , model="item" />
-            }
-        </div>
-    </div>
-    <div class="events" id="cs-sections">
-        <h1 id="section-title">Music</h1>
-        <div id="event-wrapper">
-            @foreach (var item in Model.MusicEvents)
-            {
-                <partial name="EventCard" , model="item" />
-            }
-        </div>
-    </div>
-    <hr>
-    <div class="events" id="cs-sections">
-        <h1 id="section-title">Organizers</h1>
-        <div id="event-wrapper">
-            @foreach (var item in Model.Organizers)
-            {
-                <partial name="OrganizerCard" , model="item" />
-            }
-        </div>
-    </div>
-    <hr>
-    
-    <div class="events" id="action-section">
-        <div class="action">
-            <p>Want to organize an event and need to make it more visible?
-                we've got you covered
-            </p>
-            <button>Publish</button>
-        </div>
-        <div class="action">
-            <p>Do you want to propose your services for an event and get bussiness deals, look no further</p>
-            <button>Propose services</button>
-        </div>
-    </div>
-</section>
+</main>

@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Event.Models;
 using Event.Data;
@@ -6,9 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Event.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Event.Services.EmailService;
-using Event.Interfaces;
-using Newtonsoft.Json.Linq;
 
 namespace Event.Controllers;
 
@@ -16,16 +12,10 @@ public class HomeController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<AppUser> _userManager;
-    private readonly IEmailSender _emailSender;
-    private readonly IHttpClientFactory _clientFactory;
-    private readonly string googleApiKey;
-    public HomeController(ApplicationDbContext context, UserManager<AppUser> userManager, IEmailSender emailSender, IHttpClientFactory clientFactory, IConfiguration configuration)
+    public HomeController(ApplicationDbContext context, UserManager<AppUser> userManager, IConfiguration configuration)
     {
         _context = context;
         _userManager = userManager;
-        _emailSender = emailSender;
-        _clientFactory = clientFactory;
-        googleApiKey = configuration["GoogleApiKey"];
     }
 
     public async Task<IActionResult> Index()
@@ -41,8 +31,10 @@ public class HomeController : Controller
                                         .Where(r => r.AttendeeId == user.Id)
                                         .Select(r => r.EventId)
                                         .ToListAsync();
+        var generalServices = _context.ServiceProposals
+                   .Where(sp => sp.EventId == null)
+                   .ToList();
 
-        // Example logic to get trending events (based on number of likes)
         var trendingEvents = events.Where(e => e.LikesCount > 1).ToList();
 
         // Categorize events
@@ -53,16 +45,16 @@ public class HomeController : Controller
 
         var viewModel = new MainPageViewModel
         {
-            AllEvents = events.Select(e => new EventDisplayViewModel { Event = e }).ToList(),
-            TrendingEvents = trendingEvents.Select(e => new EventDisplayViewModel { Event = e }).ToList(),
-            TechEvents = techEvents.Select(e => new EventDisplayViewModel { Event = e }).ToList(),
-            MusicEvents = musicEvents.Select(e => new EventDisplayViewModel { Event = e }).ToList(),
-            OnlineEvents = onlineEvents.Select(e => new EventDisplayViewModel { Event = e }).ToList(),
+            AllEvents = events.Select(e => new EventDisplayViewModel { Event = e, IsRsvped = userRSVPedEventIds.Contains(e.Id) }).ToList(),
+            TrendingEvents = trendingEvents.Select(e => new EventDisplayViewModel { Event = e, IsRsvped = userRSVPedEventIds.Contains(e.Id) }).ToList(),
+            TechEvents = techEvents.Select(e => new EventDisplayViewModel { Event = e, IsRsvped = userRSVPedEventIds.Contains(e.Id) }).ToList(),
+            MusicEvents = musicEvents.Select(e => new EventDisplayViewModel { Event = e, IsRsvped = userRSVPedEventIds.Contains(e.Id) }).ToList(),
+            OnlineEvents = onlineEvents.Select(e => new EventDisplayViewModel { Event = e, IsRsvped = userRSVPedEventIds.Contains(e.Id) }).ToList(),
             Organizers = organizers
         };
 
         return View(viewModel);
-    
+
 
     }
 
@@ -85,7 +77,7 @@ public class HomeController : Controller
             };
             user.RSVPs.Add(rsvp);
             _context.Add(rsvp);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             isRsvped = true;
         }
         else
@@ -102,27 +94,38 @@ public class HomeController : Controller
     public async Task<IActionResult> GetEvent(int id)
     {
         var _event = await _context.Events.FindAsync(id);
-        return View("EventDetails", _event);
-    }
+        var eventSpecificServices = _context.ServiceProposals
+                         .Where(sp => sp.EventId == _event.Id)
+                         .ToList();
+        var suggestedServices = await _context.ServiceProposals
+                                    .Include(sp => sp.Event) // Join with Event data
+                                    .Where(sp => sp.Event == null || sp.Event.Category == _event.Category)
+                                    .ToListAsync();
+        var similarEvents = await _context.Events
+            .Where(e => e.Category == _event.Category && e.Id != _event.Id) // Exclude the main event
+            .Select(e => new EventDisplayViewModel { Event = e })
+            .ToListAsync();
 
-    [HttpGet]
-    public async Task<IActionResult> Search(string keyword)
-    {
-        var query = _context.Events.AsQueryable();
-        var events = await query.Where(e => e.Category.Contains(keyword)).ToListAsync();
-        var user = await _userManager.GetUserAsync(User);
-        var userRSVPedEventIds = await _context.RSVPs
-                                        .Where(r => r.AttendeeId == user.Id)
-                                        .Select(r => r.EventId)
-                                        .ToListAsync();
-        var eventViewModels = events.Select(e => new EventDisplayViewModel
+        var generalServices = _context.ServiceProposals.ToList();
+        var viewModel = new EventDetailsViewModel
         {
-            Event = e,
-            IsRsvped = userRSVPedEventIds.Contains(e.Id)
-        }).ToList();
-        return View("Index", eventViewModels);
+            Event = _event,
+            Services = suggestedServices,
+            SimilarEvents = similarEvents
+
+        };
+        return View("EventDetails", viewModel);
     }
 
+    public async Task<IActionResult> GetEvents()
+    {
+        var _events = await _context.Events.ToListAsync();
+        var viewmodel = new EventsPageViewModel
+        {
+            Events = _events.Select(e => new EventDisplayViewModel { Event = e }).ToList()
+        };
+        return View("EventsPage", viewmodel);
+    }
 
     [HttpPost]
     public async Task<IActionResult> LikeEvent(int eventId)
@@ -157,5 +160,10 @@ public class HomeController : Controller
 
         return Json(new { success = false });
     }
+
+    // public async Task<IActionResult> Search(string keyword)
+    // {
+
+    // }
 
 }

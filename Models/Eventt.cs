@@ -21,5 +21,6 @@ namespace Event.Models
 
         public string ImageUrl { get; set; } = string.Empty;
         public List<string> SecondaryImageUrls { get; set; } = new List<string>();
+        public List<ServiceProposal> ServiceProposals { get; set; }
     }
 }

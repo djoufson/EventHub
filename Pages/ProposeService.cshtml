@@ -1,0 +1,30 @@
+@page "{eventId:int?}"
+@model Event.Pages.ProposeService
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "ProposeService";
+}
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <form class="form-wrapper" method="post">
+        <h1>Service Proposal form</h1>
+        <div class="form-group">
+            <label>What do you offer?</label>
+            <textarea class="form-control" asp-for="ProposalModel.ServiceProposal.Description" required></textarea>
+        </div>
+        <div>
+            <label>What kind of events are you looking for?</label>
+            <select class="form-control" asp-for="ProposalModel.ServiceProposal.EventTypes" multiple>
+                @foreach (var eventType in Model.ProposalModel.AvailableEventTypes)
+                {
+                    <option value="@eventType">@eventType</option>
+                }
+            </select>
+        </div>
+        <button class="btn btn-success" type="submit">Submit Proposal</button>
+    </form>
+
+</div>

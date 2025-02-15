@@ -1,26 +1,32 @@
 @page
 @model Event.Pages.SignUp;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_MinimalLayout";
+}
 <section id="signup">
     <div class="form-wrapper">
-        <h2> SignUp</h2>
-        <form method="post" asp-page="/SignUp"  asp-validation-summary="All">
-             <div class="form-group">
-                <label asp-for="registerRequestDto.UserName">Name</label>
-                <input asp-for="registerRequestDto.UserName" class="form-control" />
-                <span asp-validation-for="registerRequestDto.UserName" class="text-danger"></span>
-            </div>
+        <div id="head-text">
+            <h2 class="title">Sign Up</h2>
+            <p>Already have an account? <a href="#">Log in</a></p>
+        </div>
+        <div class="social-login-buttons">
+            <button class="social-button google">
+                <i class="fa-brands fa-google me-2"></i> Continue with Google
+            </button>
+            <button class="social-button facebook">
+                <i class="fab fa-facebook-f"></i> Continue with Facebook
+            </button>
+        </div>
+        <div class="divider">Or use your email</div>
+        <form method="post" asp-page="/SignUp" asp-validation-summary="All">
             <div class="form-group">
-                <label asp-for="registerRequestDto.Email">Email</label>
-                <input asp-for="registerRequestDto.Email" class="form-control" />
+                <input asp-for="registerRequestDto.Email" class="form-control email-input" placeholder="Email" />
                 <span asp-validation-for="registerRequestDto.Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="registerRequestDto.Password">Password</label>
-                <input asp-for="registerRequestDto.Password" class="form-control" />
-                <span asp-validation-for="registerRequestDto.Password" class="text-danger"></span>
+            <div class="validation-button">
+                <button type="submit" class="btn btn-primary" id="signup-button">SignUp</button>
             </div>
-            <button type="submit" class="btn btn-primary">SignUp</button>
         </form>
     </div>
 </section>

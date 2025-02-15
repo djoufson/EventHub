@@ -13,24 +13,21 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sticky-top" id="nav">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow md-3" id="desktop">
             <div class="container-fluid flex" id="nav-wrapper">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Event</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="search">
-                    <form method="post" asp-controller="Home" asp-action="Search">
-                        <input name="keyword" type="search" class="form-control search-input"
-                            placeholder="Search Events...">
-                        <button class="btn btn-primary search-btn" type="submit">Search</button>
-                    </form>
-                </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="GetEvents">Events</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/AddOrganizer">Add organizer</a>
@@ -39,7 +36,7 @@
                             <a class="nav-link text-dark" asp-page="/AddEvent">Add Event</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/SignUp">Sign in</a>
+                            <a class="nav-link text-dark" asp-page="/SignUp">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Login" asp-page-handler="LogOut">Log out</a>
@@ -51,6 +48,24 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Bottom Navigation Bar for Mobile -->
+        <nav class="navbar bottom-navigation navbar-light bg-light fixed-bottom d-md-none" id="mobile">
+            <div class="container-fluid justify-content-around">
+                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                    <span class="d-block">Home</span>
+                </a>
+                <a class="nav-link text-dark" asp-controller="Home" asp-action="GetEvents">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="d-block">Events</span>
+                </a>
+                <a class="nav-link text-dark" asp-page="/MyEvents">
+                    <i class="fas fa-user"></i>
+                    <span class="d-block">My Events</span>
+                </a>
+            </div>
+        </nav>
     </header>
     <div>
         <main role="main" class="pb-3">
@@ -60,12 +75,13 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Event
+            &copy; 2025 - Event
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

@@ -24,12 +24,6 @@ namespace Event.Extensions
             builder.AddSignInManager<SignInManager<AppUser>>();
         }
 
-        public static void ConfigureEmailService(this IServiceCollection services, IConfiguration configuration)
-        {
-            var emailConfig = configuration
-                .GetSection("EmailConfiguration")
-                .Get<EmailConfiguration>();
-            services.AddSingleton(emailConfig);
-        }
+        
     }
 }

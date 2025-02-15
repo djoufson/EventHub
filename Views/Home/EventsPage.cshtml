@@ -1,0 +1,37 @@
+@using Event.Models.ViewModels
+@model EventsPageViewModel
+@{
+    ViewData["Title"] = "EventDetails";
+}
+@{
+    Layout = "_Layout";
+}
+<section class="events-page">
+    <!-- Search Bar Container -->
+    <div class="search-container">
+        <form action="/Events/Search" method="GET" class="search-form">
+            <input type="text" name="query" class="search-input" placeholder="Search for events..." required>
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="filter-buttons" id="filter-section">
+        <button class="btn btn-outline-primary">
+            Online
+        </button>
+        <button class="btn btn-outline-primary">
+            Music
+        </button>
+        <button class="btn btn-outline-primary">
+            Conferences
+        </button>
+    </div>
+    <div id="events">
+        @foreach (var item in Model.Events)
+        {
+            <partial name="EventCard" , model="item" />
+        }
+    </div>
+</section>
