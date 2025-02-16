@@ -33,7 +33,7 @@
         <div class="decription">
             <div>
                 <h1>
-                    @Model.Event.Description
+                @Model.Event.Description
                 </h1>
             </div>
             <p>@Model.Event.Date.ToString("D")</p>
@@ -54,13 +54,13 @@
             <div class="events">
             @if (Model.SimilarEvents.Count != 0)
             {
-                <h1 id="section-title">Similar Events</h1>
-                <div id="event-wrapper">
-                @foreach (var item in Model.SimilarEvents.Take(4))
-                {
-                    <partial name="EventCard" , model="item" />
-                }
-                </div>
+                    <h1 id="section-title">Similar Events</h1>
+                    <div id="event-wrapper">
+                    @foreach (var item in Model.SimilarEvents.Take(4))
+                    {
+                            <partial name="EventCard" , model="item" />
+                    }
+                    </div>
             }
             </div>
         </div>

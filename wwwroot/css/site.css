@@ -20,6 +20,9 @@ body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
 }
+a{
+  text-decoration: none;
+}
 h1,h2,h3{
   font-family: 'Poppins',sans-serif;
   font-weight: 700;
@@ -38,7 +41,7 @@ h1,h2,h3{
 }
 
 header nav {
-  height: 10vh;
+  height: 8vh;
   background: rgba(255, 255, 255, 0.5); /* Transparent white background */
   backdrop-filter: blur(10px); /* Glass effect */
   border: none; /* Remove border if needed */
@@ -159,7 +162,7 @@ Index
   background-size: cover;  /* Adjusts the size */
   background-position: center;  /* Centers the SVG */
   background-repeat: no-repeat;  /* Prevents tiling */
-  height: 60vh;  /* Full screen */
+  height: 80vh;  /* Full screen */
   display: flex;
   position: relative;
   align-items: center;
@@ -273,23 +276,17 @@ Index
 }
 
 /* Event details page */
-.event-detail {
-  display: flex;
-  flex-direction: column;
+.event-detail{
+  margin: 5px 50px;
 }
-
-.event-detail #event-image {
-  width: 40%;
-}
-.event-detail #event-carousel {
-  justify-content: left;
-  align-content: start;
-}
+/* #event-carousel{
+  margin: 5px 50px;
+}  */
 .event-detail #event-carousel img {
-  height: 50vh;
-  width: 50%;
+  height: 85vh;
   object-fit: cover;
   object-position: center;
+  border-radius: 10px;
 }
 #event-description {
   display: flex;
@@ -315,11 +312,6 @@ Index
   text-align: center;
   justify-content: center;
   align-items: center;
-}
-.service-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
 /* Service Card */
@@ -488,6 +480,11 @@ nav.fixed-bottom .nav-link span {
   padding: 15px;
 }
 /* Search Bar Styling */
+.search-filter{
+  height: 50vh;
+  justify-content: center;
+  align-content: center;
+}
 .search-container {
   display: flex;
   justify-content: center;

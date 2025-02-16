@@ -8,7 +8,8 @@
 }
 <section class="events-page">
     <!-- Search Bar Container -->
-    <div class="search-container">
+   <div class="search-filter">
+     <div class="search-container">
         <form action="/Events/Search" method="GET" class="search-form">
             <input type="text" name="query" class="search-input" placeholder="Search for events..." required>
             <button type="submit" class="search-button">
@@ -28,6 +29,8 @@
             Conferences
         </button>
     </div>
+   </div>
+    <h1 id="section-title">For You</h1>
     <div id="events">
         @foreach (var item in Model.Events)
         {
