@@ -19,6 +19,7 @@ body {
   margin-bottom: 60px;
   width: 100%;
   font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
 }
 a{
   text-decoration: none;
@@ -156,13 +157,48 @@ Index
 
 ****/
 
+.feature-section {
+  height: 100vh;
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.feature-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.feature-text {
+  text-align: center;
+}
+.feature-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.feature-description {
+  font-size: 1.1rem;
+  color: #555;
+}
+.feature-image {
+  height: 60vh;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center; 
+}
+.cta-button {
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
 /* Hero */
 .hero-section {
   background-image: url('/assets/hero2.svg');
   background-size: cover;  /* Adjusts the size */
   background-position: center;  /* Centers the SVG */
   background-repeat: no-repeat;  /* Prevents tiling */
-  height: 80vh;  /* Full screen */
+  height: 90vh;  /* Full screen */
   display: flex;
   position: relative;
   align-items: center;
@@ -222,8 +258,8 @@ Index
   padding-top: 40px;
   margin: 0 20px;
 }
-.events #section-title {
-  text-align: left;
+#section-title {
+  text-align: center;
 }
 .events #event-wrapper {
   display: flex;
@@ -293,6 +329,9 @@ Index
   flex-direction: column;
 }
 @media (max-width: 600px) {
+  .event-detail{
+    margin: 0px 15px;
+  }
   .event-detail .decription{
     margin: 0 10px;
   }

@@ -46,3 +46,20 @@ document.querySelectorAll(".rsvp-form").forEach(form => {
         .catch(error => console.error('Error:', error)); // Handle any errors
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".feature-section");
+    
+    function revealSections() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight - 100) {
+                section.classList.add("visible");
+            }
+        });
+    }
+    
+    revealSections();
+    window.addEventListener("scroll", revealSections);
+});

@@ -10,8 +10,8 @@
     <!-- Search Bar Container -->
    <div class="search-filter">
      <div class="search-container">
-        <form action="/Events/Search" method="GET" class="search-form">
-            <input type="text" name="query" class="search-input" placeholder="Search for events..." required>
+        <form method = "GET" asp-controller= "Home" asp-action = "Search" class="search-form">
+            <input type="text" name="keyword" class="search-input" placeholder="Search for events..." required>
             <button type="submit" class="search-button">
                 <i class="fas fa-search"></i>
             </button>
@@ -19,16 +19,20 @@
     </div>
 
     <div class="filter-buttons" id="filter-section">
-        <button class="btn btn-outline-primary">
+        <button class="btn btn-outline-primary filter-btn" data-filter="Online">
             Online
         </button>
-        <button class="btn btn-outline-primary">
+        <button class="btn btn-outline-primary filter-btn" data-filter="Music">
             Music
         </button>
-        <button class="btn btn-outline-primary">
+        <button class="btn btn-outline-primary filter-btn" data-filter="Conferences">
             Conferences
         </button>
     </div>
+   </div>
+   
+   <div class="search-events">
+    
    </div>
     <h1 id="section-title">For You</h1>
     <div id="events">

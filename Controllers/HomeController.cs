@@ -161,9 +161,36 @@ public class HomeController : Controller
         return Json(new { success = false });
     }
 
-    // public async Task<IActionResult> Search(string keyword)
-    // {
+    [HttpGet]
+    public async Task<IActionResult> Search(string keyword)
+    {
+        Console.WriteLine($"Searching for events with keyword: {keyword}");
+        try
+        {
+            var searchedEvents = _context.Events
+                .Where(e => e.Description.Contains(keyword))
+                .Select(e => new EventDisplayViewModel { Event = e })
+                .AsNoTracking()
+                .ToList();
+            return View("SearchedEvents", searchedEvents);
 
-    // }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in Search: {ex.Message}");
+            return StatusCode(500, "An error occurred while processing your request.");
+        }
+
+    }
+
+    public async Task<IActionResult> FilterEvents(string category)
+    {
+        var filteredEvents = await _context.Events
+            .Where(e => e.Category == category)
+            .ToListAsync();
+
+        return PartialView("_EventListPartial", filteredEvents);
+    }
+
 
 }
