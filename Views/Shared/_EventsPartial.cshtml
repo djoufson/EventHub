@@ -1,0 +1,7 @@
+@using Event.Models.ViewModels
+@model List<EventDisplayViewModel>
+
+@foreach (var item in Model)
+{
+    <partial name="EventCard" , model="item" />
+}

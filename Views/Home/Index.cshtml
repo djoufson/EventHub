@@ -7,31 +7,29 @@
 @{
     Layout = "_Layout";
 }
-
-<main>
     <section id="hero" class="hero-section">
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1>We Have Gathered The Best Events For You!</h1>
-                <p>Find events, book services, and connect with people!</p>
-                <a asp-controller="Home" asp-action="GetEvents" class="btn btn-primary">Explore Events</a>
+                <h1>We Have Gathered The Best Events in Bamenda For You!</h1>
+                <p>Find events, advertise, and connect with people!</p>
+                <a asp-controller="Home" asp-action="GetEvents" class="animated-gradient-btn btn btn-primary">Explore Events</a>
             </div>
         </div>
     </section>
     <section class="container">
-        <div class="row feature-section align-items-center">
-            <div class="col-md-6">
+        <div class="section row feature-section align-items-center">
+            <div class="col-md-6 order-2 order-md-1">
                 <h2 class="feature-title">Your Next Event Awaits!</h2>
                 <p class="feature-description">Join exciting events near you or online. Browse trending categories, RSVP with ease, and stay updated.</p>
                 <a href="#" class="btn btn-primary cta-button">Find an Event</a>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col text-center">
                 <img src="assets/bamenda.jpeg" alt="Event Attending" class="feature-image">
             </div>
         </div>
 
-        <div class="row feature-section align-items-center flex-md-row-reverse">
-            <div class="col-md-6">
+        <div class="section row feature-section align-items-center flex-md-row-reverse">
+            <div class="col-md-6 order-2 order-md-1">
                 <h2 class="feature-title">Connect, Collaborate & Advertise Smartly</h2>
                 <p class="feature-description">Want to promote your brand at an event? Easily chat with organizers, book ad space, and gain exposure.</p>
                 <a href="#" class="btn btn-primary cta-button">Start Chatting</a>
@@ -41,8 +39,8 @@
             </div>
         </div>
 
-        <div class="row feature-section align-items-center">
-            <div class="col-md-6">
+        <div class="section row feature-section align-items-center">
+            <div class="col-md-6 order-2 order-md-1">
                 <h2 class="feature-title">Turn Your Skills Into Opportunities</h2>
                 <p class="feature-description">Offer your services to event organizers, secure bookings, and grow your network while making money.</p>
                 <a href="#" class="btn btn-primary cta-button">Offer Your Service</a>
@@ -61,5 +59,15 @@
                 <partial name="EventCard" , model="item" />
             }
         </div>
+    </div><!-- Contact Us Section -->
+<section class="contact-section text-center py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold text-primary">Have Questions? We're Here to Help!</h2>
+        <p class="lead text-muted">Reach out to us for inquiries, partnerships, or support. Our team is always ready to assist you.</p>
+        <a href="mailto:support@eventhub.com" class="btn btn-primary btn-lg mt-3">
+            <i class="fas fa-envelope"></i> Contact Us
+        </a>
     </div>
-</main>
+</section>
+
+

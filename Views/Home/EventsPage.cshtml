@@ -6,39 +6,41 @@
 @{
     Layout = "_Layout";
 }
-<section class="events-page">
-    <!-- Search Bar Container -->
-   <div class="search-filter">
-     <div class="search-container">
-        <form method = "GET" asp-controller= "Home" asp-action = "Search" class="search-form">
-            <input type="text" name="keyword" class="search-input" placeholder="Search for events..." required>
-            <button type="submit" class="search-button">
-                <i class="fas fa-search"></i>
+    <div class="search-filter">
+        <div class="search-container">
+            <form method="GET" asp-controller="Home" asp-action="Search" class="search-form">
+                <input type="text" name="keyword" class="search-input" placeholder="Search for events..." required>
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="filter-buttons" id="filter-section">
+            <button class="btn btn-outline-primary filter-btn active" data-filter="All">
+                All
             </button>
-        </form>
+            <button class="btn btn-outline-primary filter-btn" data-filter="Online">
+                Online
+            </button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="Music">
+                Music
+            </button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="Conferences">
+                Conferences
+            </button>
+        </div>
     </div>
 
-    <div class="filter-buttons" id="filter-section">
-        <button class="btn btn-outline-primary filter-btn" data-filter="Online">
-            Online
-        </button>
-        <button class="btn btn-outline-primary filter-btn" data-filter="Music">
-            Music
-        </button>
-        <button class="btn btn-outline-primary filter-btn" data-filter="Conferences">
-            Conferences
-        </button>
+    <h1 id="filtered-title" class="section-title"></h1>
+    <div class="events" id="filtered-events">
+        <!-- Filtered events will be inserted here -->
     </div>
-   </div>
-   
-   <div class="search-events">
-    
-   </div>
-    <h1 id="section-title">For You</h1>
-    <div id="events">
-        @foreach (var item in Model.Events)
+
+    <h1 class="section-title">For You</h1>
+    <div class="events">
+        @foreach (var item in Model.Events.Take(4))
         {
             <partial name="EventCard" , model="item" />
         }
     </div>
-</section>

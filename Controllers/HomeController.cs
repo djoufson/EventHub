@@ -185,11 +185,25 @@ public class HomeController : Controller
 
     public async Task<IActionResult> FilterEvents(string category)
     {
-        var filteredEvents = await _context.Events
-            .Where(e => e.Category == category)
-            .ToListAsync();
+        List<EventDisplayViewModel> eventList;
 
-        return PartialView("_EventListPartial", filteredEvents);
+        if (string.IsNullOrEmpty(category) || category == "All")
+        {
+            var allEvents = await _context.Events
+                .Select(e => new EventDisplayViewModel { Event = e })
+                .ToListAsync();
+            return PartialView("_EventsPartial", allEvents);
+        }
+        else
+        {
+            eventList = await _context.Events
+                .Where(e => e.Category == category)
+                .Select(e => new EventDisplayViewModel { Event = e })
+                .ToListAsync();
+        }
+
+        return PartialView("_EventsPartial", eventList);
+
     }
 
 

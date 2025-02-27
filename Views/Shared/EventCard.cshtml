@@ -3,24 +3,26 @@
 
 <div class="card card-outline-primary m-1 p-1">
     <img class="card-img card-img-top img-fluid" loading="lazy" src="/@Model.Event.ImageUrl" />
-    <a href="/Home/GetEvent/@Model.Event.Id">
-        <div class="card-body">
+
+    <div class="card-body">
+        <a href="/Home/GetEvent/@Model.Event.Id">
             <h5 class="card-text">@Model.Event.Description</h5>
             <h6>@Model.Event.Date.ToString("D")</h6>
             <h6>@Model.Event.Location</h6>
-            <div class="card-buttons">
-                <form class="rsvp-form" method="post" asp-controller="Home" asp-action="Rsvp"
-                    asp-route-id="@Model.Event.Id">
-                    <button class="btn rsvp @(Model.IsRsvped ? "btn-success" : "btn-primary")"
-                        id="rsvp-btn">@(Model.IsRsvped ? "Attending" : "RSVP")</button>
-                </form>
-                <button class="btn btn-outline-primary" id="rsvp">
-                    <a href="/Home/GetEvent/@Model.Event.Id">More</a>
-                </button>
-                <button class="like-btn" data-event-id="@Model.Event.Id" onclick="likeEvent(@Model.Event.Id)">
-                    <i class="fas fa-heart text-muted"></i> (<span id="like-count-@Model.Event.Id">@Model.Event.LikesCount</span>)
-                </button>
-            </div>
+        </a>
+        <div class="card-buttons">
+            <form class="rsvp-form" method="post" asp-controller="Home" asp-action="Rsvp"
+                asp-route-id="@Model.Event.Id">
+                <button class="btn rsvp @(Model.IsRsvped ? "btn-success" : "btn-primary")"
+                    id="rsvp-btn">@(Model.IsRsvped ? "Attending" : "RSVP")</button>
+            </form>
+            <button class="btn btn-outline-primary" id="rsvp">
+                <a href="/Home/GetEvent/@Model.Event.Id">More</a>
+            </button>
+            <button class="like-btn" data-event-id="@Model.Event.Id" onclick="likeEvent(@Model.Event.Id)">
+                <i class="fas fa-heart text-muted"></i> (<span
+                    id="like-count-@Model.Event.Id">@Model.Event.LikesCount</span>)
+            </button>
         </div>
-    </a>
+    </div>
 </div>

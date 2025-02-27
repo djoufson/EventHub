@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow md-3" id="desktop">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow md-3 fixed-top" id="desktop">
             <div class="container-fluid flex" id="nav-wrapper">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Event</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -67,17 +67,25 @@
             </div>
         </nav>
     </header>
-    <div>
-        <main role="main" class="pb-3">
+    
+        <main role="main" class=" pb-3">
             @RenderBody()
         </main>
-    </div>
+    
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Event
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2025 EventHub. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

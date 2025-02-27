@@ -30,6 +30,12 @@
                 </a>
             </div </div>
         </div>
+        <div class="search-events">
+            <h2 id="filtered-title"></h2>
+            <div id="filtered-events">
+                
+            </div>
+        </div>
         <div class="decription">
             <div>
                 <h1>
@@ -41,33 +47,28 @@
             <p>@Model.Event.Description</p>
             <div class="action">
                 <a href="https://wa.me/+237681719103?text=I%20am%20interested%20in%20your%20event!" target="_blank">
-                <button class="btn btn-success">Chat with Organizer</button>
-            </a>
+                    <button class="btn btn-success">Chat with Organizer</button>
+                </a>
             </div>
 
         </div>
 
-        <div class="section-container">
-            <button class="btn">
-                <a asp-page="/ProposeService" asp-route-eventId="@Model.Event.Id">Propose a Service for this Event</a>
-            </button>
-        </div>
-        <div class="section-container similar-events">
-            <div class="events">
-            @if (Model.SimilarEvents.Count != 0)
-            {
-                    <h1 id="section-title">Similar Events</h1>
+    @if (Model.SimilarEvents.Count != 0)
+    {
+            
+                <h1 id="section-title">Similar Events</h1>
+                <div class="events" id="similar-events">
                     <div id="event-wrapper">
                     @foreach (var item in Model.SimilarEvents.Take(4))
                     {
                             <partial name="EventCard" , model="item" />
                     }
                     </div>
-            }
-            </div>
-        </div>
-         <div class="section-container similar-events">
-           <h1 class="section-title">Top sites for your Events</h1>
+                </div>
+
+    }
+        <div class="section-container">
+            <h1 class="section-title">Top sites for your Events</h1>
         </div>
 
 </section>
