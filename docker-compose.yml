@@ -1,0 +1,16 @@
+services:
+  event_hub_sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: event_hub_sqlserver
+    user: root
+    hostname: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "@Pa55w0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+      - event_hub_sqlserver_sqlserver_data:/var/opt/mssql
+
+volumes:
+  event_hub_sqlserver_sqlserver_data:
