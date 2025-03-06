@@ -7,6 +7,7 @@ using Event.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel;
+using Microsoft.Identity.Client;
 
 namespace Event.Data
 {
@@ -15,7 +16,7 @@ namespace Event.Data
         public ApplicationDbContext(DbContextOptions options)
         : base(options)
         {
-
+            
         }
 
         public DbSet<Eventt>? Events { get; set; }
@@ -62,25 +63,23 @@ namespace Event.Data
                     NormalizedName = "USER"
                 },
             };
+            var hasher = new PasswordHasher<AppUser>();
+            var user = new AppUser
+            {
+                UserName = "Pack",
+                NormalizedUserName = "PACK",
+                NormalizedEmail = "PACK@GMAIL.COM",
+                Email = "pack@gmail.com",
+            };
+            user.PasswordHash = hasher.HashPassword(user, "pack12341");
+
             List<Eventt> events = new List<Eventt>
             {
-                new Eventt
-                {
-                    Id = 1,
-                    Category = "Concert",
-                    Description = "A kindom invasion, bringing the presence of God the the lost sheep",
-                    IsTicketed = false
-                },
-                 new Eventt
-                {
-                    Id = 2,
-                    Category = "Art",
-                    Description = "Lux amiga putting everyone on the dancing floor",
-                    IsTicketed = true
-                },
+                
             };
             modelBuilder.Entity<Eventt>().HasData(events);
             modelBuilder.Entity<IdentityRole>().HasData(roles);
+            modelBuilder.Entity<AppUser>().HasData(user);
         }
 
 

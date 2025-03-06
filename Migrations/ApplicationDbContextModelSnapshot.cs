@@ -91,6 +91,24 @@ namespace Event.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0001d86f-4202-4116-8ac6-1d216408c622",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8c43584e-2783-4f86-8a08-2f90b66b463e",
+                            Email = "zack@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ZACK@GMAIL.COM",
+                            NormalizedUserName = "PAN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHz18fQWx0vMQ9zOiEHAPvK6nIGAiixErzcvn5/VB8EWHLKH2Ud7ogi8vgH5SalCtw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9cba8e7f-b424-4e56-b25e-b87a9604feca",
+                            TwoFactorEnabled = false,
+                            UserName = "Zack"
+                        });
                 });
 
             modelBuilder.Entity("Event.Models.EventLike", b =>
@@ -167,24 +185,26 @@ namespace Event.Migrations
                         new
                         {
                             Id = 1,
-                            Category = "Concert",
+                            Category = "Online",
                             Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A kindom invasion, bringing the presence of God the the lost sheep",
-                            ImageUrl = "",
+                            Description = "AI, the major break through",
+                            ImageUrl = "assets/ai.jpg",
                             IsTicketed = false,
                             LikesCount = 0,
-                            SecondaryImageUrls = "[]"
+                            Location = "Google Meet",
+                            SecondaryImageUrls = "[\"assets/ai.jpg\",\"assets/ai2.jpg\"]"
                         },
                         new
                         {
                             Id = 2,
-                            Category = "Art",
+                            Category = "Online",
                             Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lux amiga putting everyone on the dancing floor",
-                            ImageUrl = "",
-                            IsTicketed = true,
+                            Description = "Graphic design webinar",
+                            ImageUrl = "assets/girl.jpeg",
+                            IsTicketed = false,
                             LikesCount = 0,
-                            SecondaryImageUrls = "[]"
+                            Location = "Whatsapp",
+                            SecondaryImageUrls = "[\"assets/ai.jpg\",\"assets/ai2.jpg\"]"
                         });
                 });
 
@@ -306,13 +326,13 @@ namespace Event.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9c6ecc42-90e4-4159-9109-27692549a9d6",
+                            Id = "4b54d3a7-c197-48b9-b447-ba47fa98cf81",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ec5738cd-9077-4845-8539-7afdb60e281c",
+                            Id = "9e3d97cf-e45a-4e1b-ac02-fa9d5e037497",
                             Name = "User",
                             NormalizedName = "USER"
                         });

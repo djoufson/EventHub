@@ -36,7 +36,7 @@
                 
             </div>
         </div>
-        <div class="decription">
+        <div class="decription border-left">
             <div>
                 <h1>
                 @Model.Event.Description
@@ -50,6 +50,10 @@
                     <button class="btn btn-success">Chat with Organizer</button>
                 </a>
             </div>
+            <form class="rsvp-form" method="post" asp-controller="Home" asp-action="Rsvp"
+                asp-route-id="@Model.Event.Id">
+                <button class="rsvp-btn btn">RSVP</button>
+            </form>
 
         </div>
 

@@ -6,14 +6,14 @@
 
     <div class="card-body">
         <a href="/Home/GetEvent/@Model.Event.Id">
-            <h5 class="card-text">@Model.Event.Description</h5>
             <h6>@Model.Event.Date.ToString("D")</h6>
             <h6>@Model.Event.Location</h6>
+            <h5 class="card-text">@Model.Event.Description</h5>
         </a>
         <div class="card-buttons">
             <form class="rsvp-form" method="post" asp-controller="Home" asp-action="Rsvp"
                 asp-route-id="@Model.Event.Id">
-                <button class="btn rsvp @(Model.IsRsvped ? "btn-success" : "btn-primary")"
+                <button class="rsvp-btn rsvp @(Model.IsRsvped ? "btn-success" : "btn-primary")"
                     id="rsvp-btn">@(Model.IsRsvped ? "Attending" : "RSVP")</button>
             </form>
             <button class="btn btn-outline-primary" id="rsvp">

@@ -38,5 +38,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
     
 app.MapRazorPages();
-
+app.MigrateDatabase();
 app.Run();

@@ -28,6 +28,7 @@ body {
 
 a{
   text-decoration: none;
+  color: inherit;
 }
 h1,h2,h3{
   font-family: 'Poppins',sans-serif;
@@ -47,7 +48,7 @@ h1,h2,h3{
 }
 
 header nav {
-  height: 8vh;
+  height: 10vh;
   background: rgba(255, 255, 255, 0.5); /* Transparent white background */
   backdrop-filter: blur(10px); /* Glass effect */
   border: none; /* Remove border if needed */
@@ -134,6 +135,25 @@ header nav {
   border-radius: 5px;
 }
 
+.rsvp-btn{
+  background-image: linear-gradient(
+    to right,
+    #ff9966 0%,
+    #ff5e62 51%,
+    #ff9966 100%
+  );
+  width: 90px;
+  height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  border: none;
+  display: block;
+}
 .card2 img {
   object-fit: cover;
   height: 60%;
@@ -164,12 +184,12 @@ Index
 
 
 .feature-section {
-  padding: 80px 0;
+  
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   scroll-snap-align: start;
-  height: 100vh;
+  height: 90vh;
 }
 .feature-section.visible {
   opacity: 1;
@@ -253,7 +273,7 @@ Index
 }
 
 .hero-content .btn:hover {
-  background: #ff5733; 
+  background-position: right center; 
   border: none;
 }
 
@@ -411,6 +431,7 @@ Index
 /* Add Event Page */
 .form-wrapper form {
   justify-content: center;
+  margin: 3rem 10rem;
 }
 
 .form-wrapper #heading {
@@ -434,9 +455,9 @@ Index
 .event-detail{
   margin: 5px 50px;
 }
-/* #event-carousel{
-  margin: 5px 50px;
-}  */
+.description{
+  border-left: 2px solid #777;
+}
 .event-detail #event-carousel img {
   height: 85vh;
   object-fit: cover;
@@ -506,12 +527,12 @@ Index
   font-size: 16px;
   outline: none; /* Remove blue outline on focus */
 }
-#signup .form-wrapper #signup-button {
+#signup .form-wrapper #signup-button{
   background-image: linear-gradient(
     to right,
-    #77a1d3 0%,
-    #79cbca 51%,
-    #77a1d3 100%
+    #ff9966 0%,
+    #ff5e62 51%,
+    #ff9966 100%
   );
   margin: 10px;
   padding: 15px 45px;
@@ -658,7 +679,7 @@ nav.fixed-bottom .nav-link span {
 
 /* Search Bar Styling */
 .search-filter{
-  height: 50vh;
+  height: 40vh;
   justify-content: center;
   align-content: center;
 }

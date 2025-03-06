@@ -34,7 +34,7 @@ namespace Event.Pages
             var user = await _userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
-                return StatusCode(500, "I cannot get the user");
+                return StatusCode(500, "User not found");
             }
             await _signInManager.SignInAsync(user, isPersistent: false);
             return RedirectToAction("Index", "Home");
