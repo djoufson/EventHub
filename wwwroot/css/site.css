@@ -228,7 +228,7 @@ Index
 
 /* Hero */
 .hero-section {
-  background-image: url('/assets/hero2.svg');
+  background-image: url('/assets/content.jpg');
   background-size: cover;  /* Adjusts the size */
   background-position: center;  /* Centers the SVG */
   background-repeat: no-repeat;  /* Prevents tiling */
@@ -580,10 +580,9 @@ Index
 
 .social-login-buttons {
   display: flex;
-  flex-direction: column; /* Stack the buttons vertically */
-  gap: 15px; /* Add space between the buttons */
+  flex-direction: column; 
   max-width: 400px;
-  margin: 20px auto; /* Center the container */
+  margin: 20px auto; 
 }
 
 .social-button {
@@ -600,55 +599,51 @@ Index
   color: white;
   text-align: center;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow for a clean look */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
 }
 
 .social-button i {
-  margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px; 
   font-size: 18px;
 }
 
 .google {
-  background-color: #4285f4; /* Google's blue */
+  background-color: #4285f4; 
 }
 
 .google:hover {
-  background-color: #3367d6; /* Slightly darker blue on hover */
+  background-color: #3367d6; 
 }
 
 .facebook {
-  background-color: #1877f2; /* Facebook's blue */
+  background-color: #1877f2; 
 }
 
 .facebook:hover {
-  background-color: #145dbf; /* Slightly darker blue on hover */
+  background-color: #145dbf; 
 }
 
 .social-button:active {
-  transform: scale(0.98); /* Slight press-in effect */
+  transform: scale(0.98); 
 }
 
 nav.fixed-bottom .nav-link {
   text-align: center;
-  font-size: 0.9rem; /* Smaller font size for labels */
+  font-size: 0.9rem; 
 }
 
 nav.fixed-bottom .nav-link i {
-  font-size: 1.4rem; /* Slightly larger icons */
+  font-size: 1.4rem; 
 }
 
 nav.fixed-bottom .nav-link span {
-  font-size: 0.75rem; /* Text below icons smaller */
+  font-size: 0.75rem; 
   margin-top: -4px;
   display: block;
 }
 
 
-/* Event details page */
-
-/* .events-page{
-  display: flex;
-} */
+/* Event page */
 .events{
   display: flex;
   flex-wrap: wrap;
@@ -663,25 +658,30 @@ nav.fixed-bottom .nav-link span {
 
 .filter-btn {
   background-color: #ddd;
-  color: #007bff;
+  color: #222;
   padding: 10px 15px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
   margin: 5px;
   border-radius: 5px;
 }
 
 .filter-btn.active {
-  background-color: #007bff; 
+  background-color: #222; 
   color: white;
   font-weight: bold;
 }
 
 /* Search Bar Styling */
 .search-filter{
-  height: 40vh;
+  height: 80vh;
   justify-content: center;
   align-content: center;
+  background-image: url('/assets/content.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .search-container {
   display: flex;
@@ -695,7 +695,7 @@ nav.fixed-bottom .nav-link span {
   display: flex;
   width: 100%;
   background: white;
-  border-radius: 50px;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }

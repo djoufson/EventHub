@@ -60,6 +60,15 @@ namespace Event.Extensions
                     IsTicketed = false,
                     ImageUrl = "assets/bamenda.jpeg",
                     SecondaryImageUrls =["assets/beignet.jpg","assets/service.jpeg"]
+                },
+                new Eventt
+                {
+                    Category = "Tech",
+                    Description = "Backend with django",
+                    Location = "UBa campus",
+                    IsTicketed = false,
+                    ImageUrl = "assets/conference.jpg",
+                    SecondaryImageUrls =["assets/beignet.jpg","assets/tech 1.jpg"]
                 }
             );
             if(!context.Users.Any())

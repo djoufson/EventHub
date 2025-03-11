@@ -19,8 +19,8 @@
             <button class="btn btn-outline-primary" id="rsvp">
                 <a href="/Home/GetEvent/@Model.Event.Id">More</a>
             </button>
-            <button class="like-btn" data-event-id="@Model.Event.Id" onclick="likeEvent(@Model.Event.Id)">
-                <i class="fas fa-heart text-muted"></i> (<span
+            <button class="like-btn btn btn-primary" data-event-id="@Model.Event.Id" onclick="likeEvent(@Model.Event.Id)">
+                <i class="fas fa-thumb text-muted"></i> (<span
                     id="like-count-@Model.Event.Id">@Model.Event.LikesCount</span>)
             </button>
         </div>
